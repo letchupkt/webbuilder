@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Wedsite Builder By LETCHU</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.3/dist/tailwind.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-dark.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            letter-spacing: 0.025em;
+            line-height: 1.6;
+            background-color: #111827;
+            color: #D1D5DB;
+        }
+
+        #preview {
+            border: 6px solid #000;
+            border-radius: 1rem;
+            width: 100%;
+            height: 500px;
+            overflow: auto;
+        }
+        .center-toggle-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+        }
+        #mobile_view, #desktop_view, #refresh_view {
+            background-color: #4B5563;
+            transition: all 0.3s ease-in-out;
+        }
+        #mobile_view:hover, #desktop_view:hover, #refresh_view:hover {
+            background-color: #3B82F6;
+        }
+
+        /* Update height for output */
+        #output {
+            height: 15em;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mx-auto p-8">
+        <h1 class="text-4xl font-bold mb-8 text-white">AI Wedsite Builder By LETCHU PKT</h1>
+        <form id="form" class="space-y-4">
+          <div>
+              <label for="page_type" class="block text-white">Page Type:</label>
+              <select id="page_type" class="bg-white text-black w-full border border-gray-300 rounded py-2 px-4">
+                  <option value="Landing Page">Landing Page</option>
+                  <option value="Coming Soon Page">Coming Soon Page</option>
+                  <option value="Under Construction Page">Under Construction Page</option>
+                  <option value="Maintenance Page">Maintenance Page</option>
+                  <option value="Lead Capture Page">Lead Capture Page</option>
+                  <option value="Marketing Page">Marketing Page</option>
+                  <option value="Countdown Page">Countdown Page</option>
+              </select>
+          </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label for="theme" class="block text-white">Theme Style:</label>
+                    <select id="theme" class="bg-white text-black w-full border border-gray-300 rounded py-2 px-4">
+                        <option value="minimal">Minimal</option>
+                        <option value="modern">Modern</option>
+                        <option value="retro">Retro</option>
+                        <option value="dark">Dark</option>
+                        <option value="colorful">Colorful</option>
+                        <option value="classic">Classic</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="layout" class="block text-white">Layout Style:</label>
+                    <select id="layout" class="bg-white text-black w-full border border-gray-300 rounded py-2 px-4">
+                        <option value="full-width">Full Width</option>
+                        <option value="boxed">Boxed</option>
+                        <option value="split">Split</option>
+                        <option value="sidebar">Sidebar</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="business_name" class="block text-white">Business/Project Name:</label>
+                    <input type="text" id="business_name" class="bg-white text-black w-full border border-gray-300 rounded py-2 px-4" required>
+                </div>
+                <div>
+                    <label for="slogan" class="block text-white">Slogan:</label>
+                    <input type="text" id="slogan" class="bg-white text-black w-full border border-gray-300 rounded py-2 px-4">
+                </div>
+            </div>
+            <div>
+              <label for="specific_features" class="block text-white">About, Specific Features or Benefits:</label>
+                <input type="text" id="specific_features" class="bg-white text-black w-full border border-gray-300 rounded py-2 px-4">
+            </div>
+            <div class="space-y-2">
+              <label class="block text-white">Features:</label>
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
+                <div>
+                  <input type="checkbox" id="hero_section" checked>
+                  <label for="hero_section" class="text-white">Hero Section</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="about_section" checked>
+                  <label for="about_section" class="text-white">About Section</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="features_section" checked>
+                  <label for="features_section" class="text-white">Features Section</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="pricing_section">
+                  <label for="pricing_section" class="text-white">Pricing Section</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="problem_section">
+                  <label for="problem_section" class="text-white">Problem Section</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="cta_section" checked>
+                  <label for="cta_section" class="text-white">CTA Section</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="testimonials_section">
+                  <label for="testimonials_section" class="text-white">Testimonials Section</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="team_section">
+                  <label for="team_section" class="text-white">Team Section</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="contact_us_section" checked>
+                  <label for="contact_us_section" class="text-white">Contact Us Section</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="faq_section">
+                  <label for="faq_section" class="text-white">FAQ Section</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="footer" checked>
+                  <label for="footer" class="text-white">Footer</label>
+                </div>
+              </div>
+            </div>
+            <div>
+                <input type="checkbox" id="unsplash_images" checked>
+                <label for="unsplash_images" class="text-white">Use Unsplash Images</label>
+            </div>
+            <div>
+                <input type="checkbox" id="use_navigation" checked>
+                <label for="use_navigation" class="text-white">Add Menu</label>
+            </div>
+            <div class="w-full text-center">
+              <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 mb-6 rounded">Let's Build!</button>
+            </div>
+        </form>
+        <pre id="output" class="mt-8 border border-gray-300 p-6 overflow-auto language-html" contenteditable="true"><code class="language-html"></code></pre>
+        <div class="flex items-center gap-4 mt-4 justify-end">
+            <button id="copy_code" class="bg-green-500 hover:bg-green-600 text-white py-2 px-6 rounded">Copy</button>
+            <button id="download_code" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded">Download</button>
+        </div>
+        <iframe id="preview" class="mt-8 bg-white border-8 border-black rounded-lg"></iframe>
+         <div class="center-toggle-buttons flex items-center gap-2 mt-4">
+            <button id="mobile_view" class="border-transparent border-2 border-l px-2 bg-black text-white"><i class="fas fa-mobile-alt"></i></button>
+            <button id="desktop_view" class="border-2 border-r border-black px-2 bg-white text-black"><i class="fas fa-desktop"></i></button>
+            <button id="refresh_view" class="border-transparent border-2 border-r px-2 bg-black text-white"><i class="fas fa-sync-alt"></i></button>
+        </div>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+        <footer class="mt-8 text-sm text-center">
+            <a href="https://www.instagram.com/letchu_pkt/" class="text-red-500">Made with @letchu_pkt 🌚</a>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+    <script>
+        const oldCode = document.getElementById('form');
+        const businessName = document.getElementById('business_name');
+        const slogan = document.getElementById('slogan');
+        const specificFeatures = document.getElementById('specific_features');
+        const theme = document.getElementById('theme');
+        const layout = document.getElementById('layout');
+
+        const output = document.getElementById('output');
+        const preview = document.getElementById('preview');
+        const mobileView = document.getElementById('mobile_view');
+        const desktopView = document.getElementById('desktop_view');
+        const refreshView = document.getElementById('refresh_view');
+
+        const heroSection = document.getElementById('hero_section');
+        const aboutSection = document.getElementById('about_section');
+        const featuresSection = document.getElementById('features_section');
+        const pricingSection = document.getElementById('pricing_section');
+        const problemSection = document.getElementById('problem_section');
+        const ctaSection = document.getElementById('cta_section');
+        const testimonialsSection = document.getElementById('testimonials_section');
+        const teamSection = document.getElementById('team_section');
+        const contactUsSection = document.getElementById('contact_us_section');
+        const faqSection = document.getElementById('faq_section');
+        const footer = document.getElementById('footer');
+        const unsplashImages = document.getElementById('unsplash_images');
+
+        const copyCodeBtn = document.getElementById('copy_code');
+        const downloadCodeBtn = document.getElementById('download_code');
+ 
+        let ws = null;
+
+        function switchToMobileView() {
+            preview.style.width = "375px";
+            preview.style.height = "667px";
+            mobileView.classList.remove("text-black");
+            mobileView.classList.add("text-white");
+            mobileView.classList.remove("border-black");
+            mobileView.classList.add("border-transparent");
+            mobileView.classList.add("bg-black");
+
+            desktopView.classList.remove("text-white");
+            desktopView.classList.add("text-black");
+            desktopView.classList.add("border-black");
+            desktopView.classList.remove("border-transparent");
+            desktopView.classList.remove("bg-black");
+        }
+
+        function switchToDesktopView() {
+            preview.style.width = "100%";
+            preview.style.height = "500px";
+            desktopView.classList.remove("text-black");
+            desktopView.classList.add("text-white");
+            desktopView.classList.remove("border-black");
+            desktopView.classList.add("border-transparent");
+            desktopView.classList.add("bg-black");
+
+            mobileView.classList.remove("text-white");
+            mobileView.classList.add("text-black");
+            mobileView.classList.add("border-black");
+            mobileView.classList.remove("border-transparent");
+            mobileView.classList.remove("bg-black");
+        }
+
+        function scrollToBottom() {
+            output.scrollTop = output.scrollHeight;
+        }
+
+        mobileView.addEventListener('click', () => {
+            switchToMobileView();
+        });
+
+        desktopView.addEventListener('click', () => {
+            switchToDesktopView();
+        });
+
+        refreshView.addEventListener('click', () => {
+            preview.srcdoc = output.innerText;
+        });
+
+        copyCodeBtn.addEventListener('click', () => {
+          const textArea = document.createElement('textarea');
+          textArea.textContent = output.innerText;
+          document.body.appendChild(textArea);
+          textArea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textArea);
+          alert('Copied Landing Page Code to Clipboard!');
+        });
+
+        downloadCodeBtn.addEventListener('click', () => {
+          const a = document.createElement('a');
+          const fileBlob = new Blob([output.innerText], { type: 'text/html' });
+          const fileURL = URL.createObjectURL(fileBlob);
+          a.href = fileURL;
+          a.download = 'index.html';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        });
+
+        function updatePrismHighlight() {
+            const codeElement = output.querySelector('code');
+            if (codeElement) {
+                Prism.highlightElement(codeElement);
+            }
+        }
+
+        output.addEventListener('input', () => {
+            preview.srcdoc = output.innerText;
+            updatePrismHighlight();
+        });
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            output.innerText = '';
+            preview.srcdoc = '';
+
+            buildLandingPage();
+        });
+
+document.getElementById('page_type').addEventListener('change', (event) => {
+  const isLandingPage = event.target.value === 'Landing Page';
+  const sections = [
+    heroSection,
+    aboutSection,
+    featuresSection,
+    pricingSection,
+    problemSection,
+    ctaSection,
+    testimonialsSection,
+    teamSection,
+    contactUsSection,
+    faqSection,
+    footer
+  ];
+
+  heroSection.checked = isLandingPage;
+  aboutSection.checked = isLandingPage;
+  featuresSection.checked = isLandingPage;
+  ctaSection.checked = isLandingPage;
+  contactUsSection.checked = isLandingPage;
+  footer.checked = isLandingPage;
+
+  if (!isLandingPage) {
+    pricingSection.checked = false;
+    problemSection.checked = false;
+    testimonialsSection.checked = false;
+    teamSection.checked = false;
+    faqSection.checked = false;
+  }
+});
+
+function buildLandingPage() {
+  const pageType = document.getElementById('page_type').value;
+  let prompt = `Create a responsive ${pageType}, with a ${theme.value} theme that has a ${layout.value} layout for a business called ${businessName.value} with the slogan ${slogan.value}, use ${businessName.value} as the logo, `;
+            if (unsplashImages.checked) {
+                prompt += "include images using Unsplash URLs and the image should be according to the keyword. ";
+            }
+            if (document.getElementById('use_navigation').checked) {
+                prompt += "Please ensure that the navigation and theme design is according to the layout and responsive on desktop and mobile screens, and If on mobile screens, display a hamburger icon menu that slides out as a drawer using animation to display the menu items. ";
+            } else {
+                prompt += "Do not include a navigation menu in the page. ";
+            }
+            prompt += "The page should have a visually appealing design and provide information about " + specificFeatures.value + ". Use Tailwind CSS and JavaScript. Use only FontAwesome icons and use the following structure: ";
+            if (heroSection.checked) {
+              prompt += "Hero Section: fullscreen image,  1. Headline  2. Sub-Header  3. CTA. ";
+            }
+            if (aboutSection.checked) {
+              prompt += "About Section (Introduce the company and what they do & Highlight the customer’s dream and how the company can help)  1. Headline  2. Section Body.";
+            }
+            if (featuresSection.checked) {
+              prompt += "Features Section (Showcase the most important features)  1. Headline  2. Section Body.";
+            }
+            if (pricingSection.checked) {
+              prompt += "Pricing Section (Present the pricing options and packages)  1. Headline  2. Section Body.";
+            }
+            if (problemSection.checked) {
+              prompt += "Problem Section (Highlight the customer’s pain point and how the company’s solution can help)  1. Headline  2. Section Body.";
+            }
+            if (ctaSection.checked) {
+              prompt += "Solution Section (Include the company’s solution as the answer to the customer’s problem)  1. Headline  2. Section Body  3. CTA.";
+            }
+            if (testimonialsSection.checked) {
+              prompt += "Social Proof Section (Include customer testimonials and case studies to show the company’s credibility).";
+            }
+            if (teamSection.checked) {
+              prompt += "Team Section (Introduce the team behind the solution)  1. Headline  2. Section Body.";
+            }
+            if (contactUsSection.checked) {
+              prompt += "Contact Us Section. (add a quick contact form)";
+            }
+            if (faqSection.checked) {
+              prompt += "FAQ Section (Add frequently asked questions for the company) use show/hide function for the questions.";
+            }
+            if (footer.checked) {
+              prompt += "Footer Section (Include contact information, links to social media (use FontAwesome icons), and additional resources).";
+            }
+            prompt += 'Only show the code and skip all other comments.';
+
+            console.log(prompt);
+
+            if (ws !== null) {
+                ws.close();
+            }
+            
+            ws = new WebSocket(`wss://backend.buildpicoapps.com/ask_ai_streaming?app_id=want-important&prompt=${encodeURIComponent(prompt)}`);
+
+            ws.addEventListener("message", (event) => {
+                console.log(event.data);
+                output.innerText = `${output.innerText}${event.data}`;
+                preview.srcdoc = output.innerText;
+                scrollToBottom();
+                updatePrismHighlight();
+            });
+
+            ws.addEventListener("close", (event) => {
+                console.log("Connection closed", event.code, event.reason);
+                if (event.code !== 1000) {
+                    alert("Oops, we ran into an error. Refresh the page and try again.");
+                }
+            });
+
+            ws.addEventListener("error", (error) => {
+                console.log('WebSocket error', error);
+                alert("Oops, we ran into an error. Refresh the page and try again.");
+            });
+        }
+
+    </script>
+</body>
+</html>
